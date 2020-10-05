@@ -1,4 +1,4 @@
-def input_probability(filename):
+def input_probability_and_alphabet(filename):
     """
     Input probability of every symbol in alphabet,
     separated by ' '.
@@ -6,8 +6,8 @@ def input_probability(filename):
     :return: list(float)
     """
     with open(filename, 'r') as fin:
-        s = fin.read().split(' ')
-        return [float(num) for num in s if num.strip()]
+        return [[float(num) for num in fin.readline().split(' ') if num.strip()],
+                [sym for sym in fin.readline().split(' ')]]
 
 
 def input_text(filename):

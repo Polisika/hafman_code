@@ -36,16 +36,8 @@ if __name__ == '__main__':
                 break
             elif event == "Code text":
                 if values[0] and values[1]:
-                    p = input.input_probability(values[0])
-                    p.sort(reverse=True)
-                    c = Counter()
-                    text = input.input_text(values[1])
-                    c.update(text)
-                    a = [num for num, s in c.most_common()]
-                    i = 0
-                    while len(p) > len(a):
-                        a.append('Unused symbol ' + str(i))  # Make len equals for correct work Hafman's algorithm.
-                        i += 1
+                    p, a = input.input_probability_and_alphabet(values[0])
+
                     dict_coded = f.hafman(p, a)
                     outInfo.update(char_out.format(
                         dict_coded,
