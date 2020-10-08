@@ -73,25 +73,30 @@ def hafman(list_probability, list_alphabet):
     return res
 
 
+def get_key(d, value):
+    for k, v in d.items():
+        if v == value:
+            return k
+
+
 def code_text(text, dict_coded):
-    res = text
-    for sym, code in dict_coded.items():
-        res = res.replace(sym, code)
-    return res
+    position = 0
+    coded = ""
+    while len(text) > position:
+        coded += dict_coded[text[position]]
+        position += 1
+
+    return coded
 
 
 def decode_text(text, dict_coded):
-    def get_key(d, value):
-        for k, v in d.items():
-            if v == value:
-                return k
-
     values = [len(elem) for elem in dict_coded.values()]
     min_of_list = min(values)
     max_of_list = max(values)
     position = 0
     quantum = min_of_list
     decoded = ""
+
     while len(text) > position:
         substring = text[position:position+quantum]
         if substring in dict_coded.values():

@@ -3,7 +3,6 @@ import functions as f
 import input
 import logging
 import output
-from collections import Counter
 
 
 char_out = '''{0}
@@ -37,7 +36,7 @@ if __name__ == '__main__':
             elif event == "Code text":
                 if values[0] and values[1]:
                     p, a = input.input_probability_and_alphabet(values[0])
-
+                    text = input.input_text(values[1])
                     dict_coded = f.hafman(p, a)
                     outInfo.update(char_out.format(
                         dict_coded,
