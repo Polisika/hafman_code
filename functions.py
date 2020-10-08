@@ -80,11 +80,9 @@ def get_key(d, value):
 
 
 def code_text(text, dict_coded):
-    position = 0
     coded = ""
-    while len(text) > position:
-        coded += dict_coded[text[position]]
-        position += 1
+    for i in range(len(text)):
+        coded += dict_coded[text[i]]
 
     return coded
 
